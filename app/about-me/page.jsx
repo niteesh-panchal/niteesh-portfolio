@@ -25,16 +25,17 @@ import {
 
 export default function AboutMe() {
   const [showSecond, setShowSecond] = useState(false);
-  const [showThird, setShowThird] = useState(false);
   const firedRef = useRef(false);
+
   const introductionText =
     "I’m a 25-year-old Full-Stack Developer passionate about building scalable, high-performance web applications. I specialize in modern front-end technologies like TypeScript, React, and Next.js, and robust back-end systems using Node.js, Docker, and MongoDB. I focus on writing clean, maintainable code and delivering intuitive, user-centered experiences.";
+
   const techLogos = [
     {
       node: (
         <Tooltip>
           <TooltipTrigger asChild>
-            <SiReact />
+            <SiReact className="text-accent-dark" />
           </TooltipTrigger>
           <TooltipContent>
             <p>React</p>
@@ -48,7 +49,7 @@ export default function AboutMe() {
       node: (
         <Tooltip>
           <TooltipTrigger asChild>
-            <SiNextdotjs />
+            <SiNextdotjs className="text-accent-dark" />
           </TooltipTrigger>
           <TooltipContent>
             <p>Next.js</p>
@@ -62,7 +63,7 @@ export default function AboutMe() {
       node: (
         <Tooltip>
           <TooltipTrigger asChild>
-            <SiTypescript />
+            <SiTypescript className="text-accent-dark" />
           </TooltipTrigger>
           <TooltipContent>
             <p>TypeScript</p>
@@ -76,7 +77,7 @@ export default function AboutMe() {
       node: (
         <Tooltip>
           <TooltipTrigger asChild>
-            <SiTailwindcss />
+            <SiTailwindcss className="text-accent-dark" />
           </TooltipTrigger>
           <TooltipContent>
             <p>TailwindCSS</p>
@@ -90,7 +91,7 @@ export default function AboutMe() {
       node: (
         <Tooltip>
           <TooltipTrigger asChild>
-            <SiMongodb />
+            <SiMongodb className="text-accent-dark" />
           </TooltipTrigger>
           <TooltipContent>
             <p>MongoDB</p>
@@ -104,21 +105,21 @@ export default function AboutMe() {
       node: (
         <Tooltip>
           <TooltipTrigger asChild>
-            <SiDocker />
+            <SiDocker className="text-accent-dark" />
           </TooltipTrigger>
           <TooltipContent>
             <p>Docker</p>
           </TooltipContent>
         </Tooltip>
       ),
-      title: "Docket",
+      title: "Docker",
       href: "https://www.docker.com",
     },
     {
       node: (
         <Tooltip>
           <TooltipTrigger asChild>
-            <SiFlask />
+            <SiFlask className="text-accent-dark" />
           </TooltipTrigger>
           <TooltipContent>
             <p>Flask</p>
@@ -132,10 +133,10 @@ export default function AboutMe() {
       node: (
         <Tooltip>
           <TooltipTrigger asChild>
-            <SiPostgresql />
+            <SiPostgresql className="text-accent-dark" />
           </TooltipTrigger>
           <TooltipContent>
-            <p>PostgreSql</p>
+            <p>PostgreSQL</p>
           </TooltipContent>
         </Tooltip>
       ),
@@ -146,7 +147,7 @@ export default function AboutMe() {
       node: (
         <Tooltip>
           <TooltipTrigger asChild>
-            <SiGithub />
+            <SiGithub className="text-accent-dark" />
           </TooltipTrigger>
           <TooltipContent>
             <p>Github</p>
@@ -160,7 +161,7 @@ export default function AboutMe() {
       node: (
         <Tooltip>
           <TooltipTrigger asChild>
-            <SiGraphql />
+            <SiGraphql className="text-accent-dark" />
           </TooltipTrigger>
           <TooltipContent>
             <p>GraphQL</p>
@@ -173,55 +174,55 @@ export default function AboutMe() {
   ];
 
   const handleFirstDone = () => {
-    // Prevent multiple triggers if callback fires per-letter
     if (firedRef.current) return;
     firedRef.current = true;
-
     setShowSecond(true);
   };
 
   return (
-    <div className="h-full w-full overflow-hidden flex flex-col">
-      <div className="p-5 ml-20 mt-20 flex flex-col">
-        <SplitText
-          text="Hello, my name is Niteesh"
-          className="text-5xl font-semibold text-center"
-          delay={70}
-          duration={1}
-          ease="power3.out"
-          splitType="words"
-          from={{ opacity: 0, y: 40 }}
-          to={{ opacity: 1, y: 0 }}
-          threshold={0.5}
-          rootMargin="-100px"
-          textAlign="start"
-          onLetterAnimationComplete={handleFirstDone}
-          showCallback
-        />
-
-        {showSecond && (
+    <section className="w-full min-h-full max-w-sm max-w-fullflex lg:max-w-full flex-col text-accent-dark">
+      <div className="px-4 pt-10 sm:px-6 md:px-10 lg:px-12 xl:px-14 md:pt-16">
+        <div className="flex flex-col gap-3">
           <SplitText
-            text="A Full Stack Developer"
-            className="text-2xl font-semibold text-center"
+            text="Hello, my name is Niteesh"
+            className="text-3xl sm:text-4xl md:text-5xl font-semibold font-main-heading"
             delay={70}
-            duration={0.75}
+            duration={1}
             ease="power3.out"
             splitType="words"
             from={{ opacity: 0, y: 40 }}
             to={{ opacity: 1, y: 0 }}
-            threshold={0.1}
+            threshold={0.5}
             rootMargin="-100px"
             textAlign="start"
-            onLetterAnimationComplete={() =>
-              console.log("Second line complete")
-            }
+            onLetterAnimationComplete={handleFirstDone}
             showCallback
           />
-        )}
+
+          {showSecond && (
+            <SplitText
+              text="A Full Stack Developer"
+              className="text-lg sm:text-xl md:text-2xl font-semibold font-main-heading text-accent-dark"
+              delay={70}
+              duration={0.75}
+              ease="power3.out"
+              splitType="words"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="-100px"
+              textAlign="start"
+              onLetterAnimationComplete={() =>
+                console.log("Second line complete")
+              }
+              showCallback
+            />
+          )}
+        </div>
       </div>
 
-      <div className="border border-white flex flex-1 flex-col overflow-hidden">
-        <div className="w-full flex items-center justify-center my-5">
+      <div className="flex flex-1 flex-col">
+        <div className="w-full flex items-center justify-center my-6 md:my-8">
           <AnimatedContent
             distance={100}
             direction="vertical"
@@ -233,13 +234,15 @@ export default function AboutMe() {
             scale={1}
             threshold={0.1}
             delay={2}
-            className="text-start mx-10 px-14"
+            className="w-full max-w-5xl px-4 sm:px-6 md:px-10 lg:px-14 text-accent-dark"
           >
-            <p className="text-lg">{introductionText}</p>
+            <p className="text-base sm:text-lg leading-7 font-sub-heading">
+              {introductionText}
+            </p>
           </AnimatedContent>
         </div>
 
-        <div className="flex flex-col p-10">
+        <div className="px-4 pb-10 sm:px-6 md:px-10 lg:px-14">
           <AnimatedContent
             distance={100}
             direction="vertical"
@@ -251,21 +254,23 @@ export default function AboutMe() {
             scale={1}
             threshold={0.1}
             delay={3}
-            className="text-start mx-10 px-14"
+            className="w-full"
           >
-            <h1 className="text-3xl ml-14 pb-9">My Tech Stack</h1>
+            <h1 className="text-2xl sm:text-3xl pb-6 md:pb-9 text-accent-dark font-sub-heading">
+              My Tech Stack
+            </h1>
 
-            <div className="overflow-hidden max-w-4xl mx-auto flex items-center justify-center">
+            <div className="overflow-hidden sm:w-2xl md:w-3xl xl:max-w-4xl mx-auto flex items-center justify-center">
               <LogoLoop
                 logos={techLogos}
                 speed={100}
                 direction="left"
-                logoHeight={60}
-                gap={60}
+                logoHeight={48}
+                gap={32}
                 hoverSpeed={0}
                 scaleOnHover
                 fadeOut
-                fadeOutColor="#ffffff"
+                fadeOutColor="#174d38"
                 ariaLabel="Technology partners"
               />
             </div>
@@ -273,7 +278,7 @@ export default function AboutMe() {
         </div>
       </div>
 
-      <div className="size-7" />
-    </div>
+      <div className="h-6" />
+    </section>
   );
 }

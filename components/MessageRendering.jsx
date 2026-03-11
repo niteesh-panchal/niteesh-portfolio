@@ -40,9 +40,9 @@ export default function MessageRendering({ answer = "" }) {
   }, [text, previewText, showFull]);
 
   return (
-    <div className="p-3 pt-32 overflow-y-auto w-full max-w-3xl">
+    <div className=" h-full flex flex-col justify-center items-center overflow-y-auto w-full max-w-3xl text-lg 2xl:text-xl text-accent-dark font-sub-heading text-start">
       {!showFull ? (
-        <div>
+        <div className="">
           <span>{text}</span>
           <Cursor cursorStyle="▍" />
         </div>

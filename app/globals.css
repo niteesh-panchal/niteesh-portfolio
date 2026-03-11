@@ -8,9 +8,6 @@ body {
   margin: 0;
 }
 
-body {
-  overflow: hidden;
-}
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -115,8 +112,8 @@ body {
   --chart-5: oklch(0.645 0.246 16.439);
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-primary: #202020;
+  --sidebar-primary-foreground: #d6d6d6;
   --sidebar-accent: oklch(0.269 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
@@ -131,3 +128,38 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* MAIN */
+@theme {
+  --color-main-dark: #174d38;
+  --color-secondary-dark: #cbcbcb;
+  --color-accent-dark: #f2f2f2;
+  --color-focus-dark: #b2ff9e;
+  --color-text-dark: #edf6f9;
+  --font-main-heading: var(--font-poppins);
+  --font-sub-heading: var(--font-google-sans);
+}
+
+/* @theme {
+  --color-main-dark: #111111;
+  --color-secondary-dark: #1c1c1c;
+  --color-accent-dark: #fffed5;
+  --color-focus-dark: #fdca00;
+  --color-text-dark: #edf6f9;
+} */
+
+/* @theme {
+  --color-main-dark: #04151f;
+  --color-secondary-dark: #183a37;
+  --color-accent-dark: #efd6ac;
+  --color-focus-dark: #c44900;
+  --color-text-dark: #edf6f9;
+} */
+/* 
+@theme {
+  --color-main-dark: #202020;
+  --color-secondary-dark: #333533;
+  --color-accent-dark: #d6d6d6;
+  --color-focus-dark: #fca311;
+  --color-text-dark: #edf6f9;
+} */

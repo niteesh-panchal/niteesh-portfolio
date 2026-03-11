@@ -7,12 +7,9 @@ export default function IntroText() {
   return (
     <div className="flex flex-col items-center justify-center gap-6 px-6 py-10 text-center">
       <div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight text-text-dark">
           <TextType
-            text={[
-              "Hello my name is NITS!",
-              "I answer questions on Niteesh's behalf.",
-            ]}
+            text={["Hi, I'm Niteesh's virtual assistant."]}
             typingSpeed={75}
             pauseDuration={1500}
             showCursor
@@ -23,6 +20,7 @@ export default function IntroText() {
             variableSpeedMax={120}
             cursorBlinkDuration={0.5}
             loop={false}
+            className="text-text-dark font-main-heading"
           />
         </h1>
       </div>
@@ -37,16 +35,16 @@ export default function IntroText() {
         animateOpacity
         scale={1}
         threshold={0.1}
-        delay={8}
+        delay={3}
         className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
       >
-        <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-accent-dark font-main-heading">
           Ask me anything about his
         </h1>
 
         <RotatingText
           texts={["Projects", "Experiences", "Education"]}
-          mainClassName="px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg bg-cyan-300 text-black text-lg sm:text-xl font-semibold"
+          mainClassName="px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg bg-cyan-300 text-black text-lg sm:text-xl font-semibold bg-focus-dark font-sub-heading"
           staggerFrom={"last"}
           initial={{ y: "100%" }}
           animate={{ y: 0 }}

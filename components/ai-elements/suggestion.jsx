@@ -1,24 +1,44 @@
-"use client";;
+"use client";
 import { Button } from "@/components/ui/button";
-import {
-  ScrollArea,
-  ScrollBar,
-} from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
-import { useCallback } from "react";
+import { useCallback, useRef } from "react";
 
-export const Suggestions = ({
-  className,
-  children,
-  ...props
-}) => (
-  <ScrollArea className="w-full overflow-x-auto whitespace-nowrap" {...props}>
-    <div className={cn("flex w-max flex-nowrap items-center gap-2", className)}>
-      {children}
+export const Suggestions = ({ className, children, ...props }) => {
+  const ref = useRef(null);
+
+  const handleWheel = (e) => {
+    if (!ref.current) return;
+
+    const el = ref.current;
+    const canScrollHorizontally = el.scrollWidth > el.clientWidth;
+
+    if (!canScrollHorizontally) return;
+
+    e.preventDefault();
+    el.scrollLeft += e.deltaY;
+  };
+
+  return (
+    <div
+      ref={ref}
+      onWheel={handleWheel}
+      className="overflow-x-auto whitespace-nowrap
+[&::-webkit-scrollbar]:hidden
+[-ms-overflow-style:none]
+[scrollbar-width:none]"
+      {...props}
+    >
+      <div
+        className={cn(
+          "flex w-max flex-nowrap items-center gap-2 select-none",
+          className,
+        )}
+      >
+        {children}
+      </div>
     </div>
-    <ScrollBar className="hidden" orientation="horizontal" />
-  </ScrollArea>
-);
+  );
+};
 
 export const Suggestion = ({
   suggestion,
@@ -35,12 +55,16 @@ export const Suggestion = ({
 
   return (
     <Button
-      className={cn("cursor-pointer rounded-full px-4", className)}
+      className={cn(
+        "shrink-0 select-none cursor-pointer rounded-full px-4",
+        className,
+      )}
       onClick={handleClick}
       size={size}
       type="button"
       variant={variant}
-      {...props}>
+      {...props}
+    >
       {children || suggestion}
     </Button>
   );
