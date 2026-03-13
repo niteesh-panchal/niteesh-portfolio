@@ -23,6 +23,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "./ui/tooltip";
+import Link from "next/link";
+import Image from "next/image";
 
 const COLLAPSED_WIDTH = 360;
 const EXPANDED_WIDTH = 720;
@@ -77,6 +79,10 @@ function ProjectCard({
   onToggle,
   isLiveButtonDisabled = false,
   isGitHubButtonDisabled = false,
+  gitHubLink,
+  liveDemoLink,
+  video,
+  image,
 }) {
   const isMobile = useIsMobile();
 
@@ -206,8 +212,34 @@ function ProjectCard({
                     transition={{ duration: 0.25 }}
                     className="grid w-full grid-rows-[1fr_auto] gap-5"
                   >
-                    <div className="flex min-h-0 items-center justify-center rounded-2xl border border-white/10 bg-neutral-900/70 text-sm text-neutral-400">
-                      Project Preview
+                    <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-neutral-900/70 aspect-video">
+                      {video ? (
+                        <video
+                          src={video}
+                          muted
+                          loop
+                          playsInline
+                          controls
+                          controlsList="nodownload"
+                          preload="metadata"
+                          onVolumeChange={(e) => {
+                            e.target.muted = true;
+                          }}
+                          className="h-full w-full object-cover"
+                        >
+                          <source src={video} type="video/mp4" />
+                        </video>
+                      ) : image ? (
+                        <Image
+                          src={image}
+                          alt="Project preview"
+                          className="h-full w-full object-cover"
+                        />
+                      ) : (
+                        <div className="flex h-full w-full items-center justify-center text-sm text-neutral-400">
+                          No Project Preview Available
+                        </div>
+                      )}
                     </div>
 
                     <div className="flex gap-3">
@@ -320,7 +352,7 @@ function ProjectCard({
                         <div className="flex flex-wrap gap-3">
                           {!isLiveButtonDisabled ? (
                             <Button className="rounded-xl border border-white/10 px-4 py-2 text-sm text-accent-dark transition hover:bg-white/5 font-sub-heading hover:cursor-pointer">
-                              Live Demo
+                              <Link href={liveDemoLink}>Live Demo</Link>
                             </Button>
                           ) : (
                             <DisabledButton
@@ -331,7 +363,7 @@ function ProjectCard({
 
                           {!isGitHubButtonDisabled ? (
                             <Button className="rounded-xl border border-white/10 px-4 py-2 text-sm text-accent-dark transition hover:bg-white/5 font-sub-heading hover:cursor-pointer">
-                              GitHub
+                              <Link href={gitHubLink}>GitHub</Link>
                             </Button>
                           ) : (
                             <DisabledButton

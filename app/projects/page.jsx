@@ -17,6 +17,9 @@ export default function Project() {
         "A luxury chef-booking platform that connects users with private chefs for curated dining experiences. Built with a multi-step booking flow, secure payments, and real-time scheduling to deliver a premium end-to-end user experience.",
       isGitHubButtonDisabled: true,
       isLiveButtonDisabled: true,
+      gitHubLink: "",
+      liveDemoLink: "",
+      video: "/assets/Haute_Cuisine_Preview.mp4",
     },
     {
       id: 2,
@@ -26,6 +29,8 @@ export default function Project() {
       description: "A Mobile Version of Haute Cuisine",
       isGitHubButtonDisabled: true,
       isLiveButtonDisabled: true,
+      gitHubLink: "",
+      liveDemoLink: "",
     },
     {
       id: 3,
@@ -35,6 +40,8 @@ export default function Project() {
         "A social platform designed for real-time engagement featuring chat, trending feeds, and interactive discussions. Focused on performance and scalable architecture to support dynamic user-generated content.",
       isGitHubButtonDisabled: false,
       isLiveButtonDisabled: false,
+      gitHubLink: "https://github.com/Niteesh3110/liv-echo",
+      liveDemoLink: "https://liv-echo.vercel.app/signin",
     },
     {
       id: 4,
@@ -44,6 +51,9 @@ export default function Project() {
         "An academic productivity platform that helps students plan their coursework through interactive curriculum graphs, task tracking, and intelligent scheduling tools.",
       isGitHubButtonDisabled: false,
       isLiveButtonDisabled: true,
+      gitHubLink: "https://github.com/Niteesh3110/student_planner",
+      liveDemoLink: "",
+      video: "/assets/Student_planner_preview.mp4",
     },
     {
       id: 5,
@@ -54,6 +64,9 @@ export default function Project() {
         "An AI-powered assistant integrated into my portfolio that answers questions about my work using retrieval-augmented generation. Built with vector embeddings and contextual search for accurate responses.",
       isGitHubButtonDisabled: false,
       isLiveButtonDisabled: true,
+      gitHubLink: "https://github.com/Niteesh3110/niteesh-portfolio",
+      liveDemoLink: "",
+      video: "/assets/Portfolio-website-preview.mp4",
     },
     {
       id: 6,
@@ -63,6 +76,9 @@ export default function Project() {
         "A browser-based logistics dashboard visualizing shipping metrics for distributors. Designed for scalability and extensibility while integrating predictive shipping insights.",
       isGitHubButtonDisabled: false,
       isLiveButtonDisabled: true,
+      gitHubLink: "https://github.com/Niteesh3110/Augur",
+      liveDemoLink: "",
+      video: "/assets/Augur_Dashboard_preview.mp4",
     },
   ];
 
@@ -100,6 +116,10 @@ export default function Project() {
               onToggle={() => setActiveId(expanded ? null : project.id)}
               isGitHubButtonDisabled={project.isGitHubButtonDisabled || false}
               isLiveButtonDisabled={project.isLiveButtonDisabled || false}
+              gitHubLink={project.gitHubLink}
+              liveDemoLink={project.liveDemoLink}
+              video={project.video}
+              image={project.image}
             />
           );
         })}
